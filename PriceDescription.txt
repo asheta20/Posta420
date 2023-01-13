@@ -1,0 +1,20 @@
+Posta420.
+UrbanDelivery(avg=200)
+NationalDelivery(avg=300)
+InternationalDelivery(avg=1000)
+
+
+if (weight<=3) {price=avg}
+else{
+price=avg+(weight-3)*50}
+
+
+if (clientPackageNr>100/day) 
+   
+   urbanDeliv=150
+   NationalDeliv=200
+   INternationalDeliv=800
+
+
+
+

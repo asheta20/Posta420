@@ -1,0 +1,62 @@
+The system will do the processess of a postal office.
+A client or the Office will create a New order for a package to be delivered. The package will be sent to the warehouse and will be maintained by StorageWorker. There it will be sorted
+filtered by address and will be sent either for "Delivering"(When the package is same city) or "Transit"(When package is on another city) by the StorageWorker. Then if the package is delivered
+succesfully DeliveryMan changes the state from Delivering to "Delivered". If there happens a problem with the delivery the package will be sent to "Problematic" state by the DeliveryMan.
+If the Package fails to deliver it will be sent to the reciever and to the Returned state.
+
+                               Package
+
+Read Access:
+-New Order(Client(Bussiness;Person),Admin, Office ))
+-Storage/Warehouse(StorageWorker, Admin, Office )
+-Transit(Admin, TransitDriver, Office)
+-Delivering(Admin, DeliveryMan, Office )
+-Delivered(Admin, Office, Economist,Office )
+-Problematic(Admin, Office, Economist, Office)
+-Returned(Admin, StorageWorker,Economist, Office)
+
+Write Access:
+-New Order(Client(Bussiness;Person),Admin, Office))
+-Storage/Warehouse(StorageWorker, Admin)
+-Transit(Admin, TransitDriver)
+-Delivering(Admin, DeliveryMan)
+-Delivered(Admin, Office)
+-Problematic(Admin, Office)
+-Returned(Admin, DeliveryMan)
+ 
+
+
+ 
+
+
+Use case 1:
+Creating a new user(Bussiness;Person) 
+
+Write Access()
+						User:
+
+				Name:(string)
+				Phone No:(int)
+				Address:(string)
+				Birthdate:(Date)
+				Package Price:(char) a)local:X*(if Weight<=3 *1  ;else *(c-3)*w)          /////W=price for kilo    C=weight of package  X,Y,Z=Price for transporting package
+						b)national:y*(if Weight<=3 *1  ;else *(c-3)*w)
+						c)international:z *(if Weight<=3 *1  ;else *(c-3)*w) 
+Use case 2: 
+Creating a new package.
+
+				   Package(Order):
+
+		Price:(double)()
+		Reciever Name:(String)
+		Reciever Address:(String)
+		Reciever Phone No:(int)
+		Sender Name:(String)
+		Sender Address:(String)
+		Sender Phone No:(int)
+		Notes:(String)
+		City:(String)
+		State:(String)
+		Type:(char)
+		Weight:(double)
+		Type(boolean): (standart/prepaid)
